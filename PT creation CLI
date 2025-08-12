@@ -124,8 +124,8 @@ You have access to a library of specialized prompts.
 
     **Data Mapping Rules:**
     *   **Row 1: `PT ID`**: Extract the value of the `id` attribute from `<problem-template>`.
-    *   **Row 2: `instruction`**: Extract the **entire inner content** of the top-level `<instruction>` tag.
-    *   **Row 3: `attachment`**: Extract the **entire inner content** of the top-level `<attachment>` tag. If empty/missing, the cell is blank.
+    *   **Row 2: `instruction`**: Extract the **entire inner content** of the top-level `<instruction>` tag **then sanitize it using the SANITIZE_FOR_TSV rules (replace newlines with `\\n`, tabs with `\\t`)**.
+    *   **Row 3: `attachment`**: Extract the **entire inner content** of the top-level `<attachment>` tag. If empty/missing, the cell is blank. Then, **then sanitize it using the SANITIZE_FOR_TSV rules (replace newlines with `\\n`, tabs with `\\t`)**.
     *   **Row 4: `mathyon-s`**: Extract the **entire inner content** of the `<mathyon-s>` tag, **then sanitize it using the SANITIZE_FOR_TSV rules (replace newlines with `\\n`, tabs with `\\t`)**.
     *   **Rows 5-10: `SPT n Subproblem`**: Extract the **entire `<subproblem>...</subproblem>` block**, including outer tags, **then sanitize it using the SANITIZE_FOR_TSV rules**. The first block goes to SPT 1, second to SPT 2, etc. If fewer than 6, remaining cells are blank.
 
